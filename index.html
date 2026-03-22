@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard - G2 Glasses</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scoreboard">
+        <!-- Timer Section -->
+        <div class="timer-section">
+            <div class="period">Q<span id="period">1</span></div>
+            <div class="timer" id="timer">12:00</div>
+        </div>
+
+        <!-- Scores Section -->
+        <div class="scores-section">
+            <div class="team home">
+                <div class="team-name" id="home-name">HOME</div>
+                <div class="score" id="home-score">0</div>
+            </div>
+            <div class="divider">-</div>
+            <div class="team away">
+                <div class="team-name" id="away-name">AWAY</div>
+                <div class="score" id="away-score">0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls (hidden on glasses, visible on phone/desktop for setup) -->
+    <div class="controls">
+        <h3>Controls</h3>
+        
+        <div class="control-group">
+            <label>Home Team:</label>
+            <input type="text" id="home-name-input" placeholder="HOME" maxlength="10">
+        </div>
+        
+        <div class="control-group">
+            <label>Away Team:</label>
+            <input type="text" id="away-name-input" placeholder="AWAY" maxlength="10">
+        </div>
+
+        <div class="score-controls">
+            <div class="team-controls">
+                <span>Home Score</span>
+                <div class="btn-group">
+                    <button onclick="adjustScore('home', -1)">-1</button>
+                    <button onclick="adjustScore('home', 1)">+1</button>
+                    <button onclick="adjustScore('home', 2)">+2</button>
+                    <button onclick="adjustScore('home', 3)">+3</button>
+                </div>
+            </div>
+            <div class="team-controls">
+                <span>Away Score</span>
+                <div class="btn-group">
+                    <button onclick="adjustScore('away', -1)">-1</button>
+                    <button onclick="adjustScore('away', 1)">+1</button>
+                    <button onclick="adjustScore('away', 2)">+2</button>
+                    <button onclick="adjustScore('away', 3)">+3</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="timer-controls">
+            <div class="control-group">
+                <label>Set Time (MM:SS):</label>
+                <input type="text" id="time-input" placeholder="12:00" value="12:00">
+                <button onclick="setTimer()">Set</button>
+            </div>
+            <div class="btn-group">
+                <button id="start-stop-btn" onclick="toggleTimer()">Start</button>
+                <button onclick="resetTimer()">Reset</button>
+            </div>
+        </div>
+
+        <div class="period-controls">
+            <label>Period/Quarter:</label>
+            <div class="btn-group">
+                <button onclick="setPeriod(1)">1</button>
+                <button onclick="setPeriod(2)">2</button>
+                <button onclick="setPeriod(3)">3</button>
+                <button onclick="setPeriod(4)">4</button>
+                <button onclick="setPeriod('OT')">OT</button>
+            </div>
+        </div>
+
+        <div class="reset-all">
+            <button onclick="resetAll()">Reset All</button>
+        </div>
+
+        <div class="view-toggle">
+            <button onclick="toggleControls()">Toggle Controls (for Glasses View)</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
